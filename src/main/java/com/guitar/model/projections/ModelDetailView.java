@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Projection(name = "modelDetailView", types = {Model.class})
 public interface ModelDetailView {
-    
+
     String getName();
 
     BigDecimal getPrice();
