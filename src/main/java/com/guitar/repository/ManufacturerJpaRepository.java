@@ -3,13 +3,16 @@ package com.guitar.repository;
 import com.guitar.model.Manufacturer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
+
 @Repository
 @RepositoryRestResource(path = "mfgs", itemResourceRel = "mfgs", collectionResourceRel = "mfgs")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public interface ManufacturerJpaRepository extends JpaRepository<Manufacturer, Long> {
 	List<Manufacturer> findByFoundedDateBefore(Date date);
 	
