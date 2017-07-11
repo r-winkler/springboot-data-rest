@@ -21,5 +21,5 @@ public interface ModelDetail {
     int getFrets();
 
     String getWoodType();
-    
+
 }
