@@ -1,15 +1,8 @@
 package com.guitar.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Location {
@@ -22,7 +15,7 @@ public class Location {
 
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="LOCATION_ID")
-	private List<Manufacturer> manufacturers = new ArrayList<Manufacturer>();
+	private List<Manufacturer> manufacturers = new ArrayList<>();
 
 	public String getState() {
 		return state;

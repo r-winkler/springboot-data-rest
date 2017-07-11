@@ -1,34 +1,27 @@
 package com.guitar.repository;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import com.guitar.model.ModelType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.guitar.Main;
-import com.guitar.model.ModelType;
-import com.guitar.repository.ModelTypeJpaRepository;
+import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Main.class)
-@WebAppConfiguration
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
 public class ModelTypePersistenceTests {
 	@Autowired
 	private ModelTypeJpaRepository modelTypeJpaRepository;
 
-	@PersistenceContext
-	private EntityManager entityManager;
+	@Autowired
+	private TestEntityManager entityManager;
 
 	@Test
 	@Transactional

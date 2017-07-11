@@ -1,35 +1,26 @@
 package com.guitar.repository;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
-
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import com.guitar.model.Location;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.guitar.Main;
-import com.guitar.model.Location;
-import com.guitar.repository.LocationJpaRepository;
+import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Main.class)
-@WebAppConfiguration
+import static org.junit.Assert.*;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
 public class LocationPersistenceTests {
 	@Autowired
 	private LocationJpaRepository locationJpaRepository;
 
-	@PersistenceContext
-	private EntityManager entityManager;
+	@Autowired
+	private TestEntityManager entityManager;
 
 	@Test
 	public void testJpaFind() {
